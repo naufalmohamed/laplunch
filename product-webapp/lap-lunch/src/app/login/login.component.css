@@ -1,0 +1,75 @@
+.container{ 
+  background-color: rgb(242, 237, 231);
+  padding: 50px;
+  border-radius: 10px; 
+  padding-bottom: 60px;
+  margin: auto;
+  justify-content: center; 
+}
+body,
+html {
+  height: 100%;
+}
+h1{
+  font-size: 2.0em;
+}
+.login-body{
+  padding-top: 80px;
+  background-image: linear-gradient(45deg,rgb(164, 239, 164) , rgb(129, 129, 245));
+  /* background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(20).webp"); */
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: auto;
+  justify-content: center;
+}
+ h1,h6{
+  text-align: center;
+
+}
+.input-icons i {
+  position: absolute;
+}
+.input-icons {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.col-md-4{
+    margin: auto;
+}
+.icon {
+  padding: 15px;
+  min-width: 10px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+}
+.form-control{
+   background-image: linear-gradient(rgb(198, 198, 238));
+}
+.bt{
+  text-align: center;
+}
+.btn{
+  width: 100%;
+} 
+/* @media all and (max-width: 900px) {
+  .container{
+    display: block;
+    width: auto;
+    width: 100%;
+  }
+} */
+.error{
+  color: red;
+}
+input.ng-invalid{
+  border-right: 5px solid red;
+}
+input.ng-valid{
+  border-right: 5px solid green;
+}

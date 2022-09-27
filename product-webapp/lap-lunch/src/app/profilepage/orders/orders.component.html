@@ -1,0 +1,34 @@
+<div class="pos-details">
+  <div>
+    <div>
+      <h3>Past Orders</h3>
+
+      <div class="order-card" *ngFor="let order of orderData">
+        <div class="item-card" *ngFor="let item of order.itemsList">
+          <div class="image-card">
+            <img
+              src="{{ item.image }}"
+              alt="Item Image"
+              style="height: 100px; width: 150px"
+            />
+          </div>
+          <div class="item-card-details">
+            <h5>{{ item.itemName }}</h5>
+            <h6>{{ item.qty }}</h6>
+            <h6>Price: {{ item.itemCost }}</h6>
+          </div>
+        </div>
+        <h6 style="font-size: 17px; color: #686b78">
+          Order Id: {{ order.orderId }}
+        </h6>
+        <h6 style="font-size: 13px; color: #686b78">{{ order.time }}</h6>
+        <h6 style="font-size: 13px; color: #686b78">
+          Delivery: {{ order.address.addressType }}
+        </h6>
+        <div class="float-right">
+          <h5 style="font-size: 18px">Total Paid: {{ order.totalPrice }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

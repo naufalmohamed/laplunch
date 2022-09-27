@@ -1,0 +1,111 @@
+<div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Registration successful!! </strong>   Login to continue to the application
+    <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="bg">
+    <div class="col-md-4">
+        <div class="container">
+            <h1>Sign Up for LapLunch</h1>
+            <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <div class="input-icons">
+                        <i class="fa fa-envelope icon" data-bs-toggle="tooltip" title="Email" data-bs-placement="top"></i>
+                        <input type="email" class="form-control" data-bs-toggle="tooltip" title="Enter Email" data-bs-placement="top" placeholder="Email" formControlName="userEmailId" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                            <span class="text-danger"
+                                *ngIf="(f.userEmailId.touched || submitted) && f.userEmailId.errors?.required">
+                                Email is required
+                            </span>
+                            <span class="text-danger"
+                                *ngIf="f.userEmailId.touched && f.userEmailId.errors?.email">
+                                Enter a valid email address
+                            </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-icons">
+                        <i class="fa fa-phone icon" data-bs-toggle="tooltip" title="Mobile number" data-bs-placement="top"></i>
+                        <input type="text" class="form-control" formControlName="mobileNum" placeholder="Phone Number" >
+                            <span class="text-danger"
+                            *ngIf="(f.mobileNum.touched || submitted) && f.mobileNum.errors?.required" >
+                                Mobile Number is required
+                            </span>
+                            <span class="text-danger"
+                            *ngIf="f.mobileNum.touched && f.mobileNum.errors?.pattern">
+                                Enter 10 digit mobile number
+                            </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-icons">
+                        <!-- <input type="text" class="form-control" formControlName="firstName" placeholder="Enter Firstname" > -->
+                        <i class="fa fa-user icon" data-bs-toggle="tooltip" title="Firstname" data-bs-placement="top"></i>
+                        <input type="text" class="form-control" data-bs-toggle="tooltip" title="Enter Username" data-bs-placement="top" placeholder="Firstname" formControlName="firstName">
+                            <span class="text-danger"
+                                *ngIf="(f.firstName.touched || submitted) && f.firstName.errors?.required">
+                                Firstname is required
+                            </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-icons">
+                        <i class="fa fa-user icon" data-bs-toggle="tooltip" title="Lastname" data-bs-placement="top"></i>
+                        <input type="text" class="form-control" data-bs-toggle="tooltip" title="Enter Lastname" data-bs-placement="top" placeholder="Lastname" formControlName="lastName">
+                            <span class="text-danger"
+                                *ngIf="(f.lastName.touched || submitted) && f.lastName.errors?.required">
+                                Lastname is required
+                            </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-icons">
+                        <i class="fa fa-key icon"  data-bs-toggle="tooltip" title="Password" data-bs-placement="top"></i>
+                        <input type="password" class="form-control" data-bs-toggle="tooltip" title="Enter Password" data-bs-placement="top" placeholder="Password" formControlName="password">
+                            <span class="text-danger"
+                                *ngIf="(f.password.touched || submitted) && f.password.errors?.required">
+                                Password is required
+                            </span>
+                            <span class="text-danger"
+                                *ngIf="f.password.touched && f.password.errors?.invalidPassword">
+                                Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
+                                letter and 1 number
+                            </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-icons">
+                        <i class="fa fa-key icon" data-bs-toggle="tooltip" title="Confirm Password" data-bs-placement="top"></i>
+                        <input type="password" class="form-control"data-bs-toggle="tooltip" title="Confirm Password" data-bs-placement="top" placeholder="Confirm Password" formControlName="confirmPassword">
+                            <span class="text-danger"
+                                *ngIf="(f.confirmPassword.touched || submitted)&& f.confirmPassword.errors?.required">
+                                Confirm Password is required
+                            </span>
+                            <span class="text-danger"
+                                *ngIf="f.confirmPassword.touched && f.confirmPassword.errors?.passwordMismatch">
+                                Passwords doesnot match
+                            </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-icons">
+                        <div class="bt">
+                            <button type="submit" class="btn btn-dark"  >Register</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </form>
+            
+        </div>
+        
+    </div>
+    
+</div>
+
+             
+
+            
+        
+    
+

@@ -1,0 +1,65 @@
+.inner{
+    overflow: hidden;
+}
+
+.inner .img{
+    transition: all 1.5s ease;
+   
+}
+
+.inner:hover img{
+
+    transition: 0.3s ease-in-out;
+    transform: scale(1.5);
+}
+
+.popup{
+    margin-left:77%;
+    margin-right: 10px;
+    margin-top: auto;
+    box-sizing: 300px;
+    text-align: right;
+    
+}
+
+.container{
+    padding: 10px;
+   
+    
+    
+}
+.cdk-overlay-container {
+    position: fixed;
+    z-index: 10000;
+}
+
+
+
+dialog {
+    position: absolute;
+    
+    top: 13%;
+    /* margin-left: 2%; */
+    width: 70%;
+    height: 80%;
+    background-color: white;
+    backdrop-filter: blur(3px);
+    z-index: 5;
+    margin-top: 30px;
+    transition: all 1.5s ease;
+    /* transform: scale(); */
+    /* overflow: hidden; */
+    overflow-y: scroll;
+    border-radius: 0.5rem;
+    border-color: white;
+    
+  }
+  /* .btn btn-primary {
+    margin: 0 !important;
+    position: absolute;
+    right: 25px;
+    top: 60px;
+  }
+ */
+
+

@@ -1,0 +1,85 @@
+.card {
+  height: 60vh;
+  margin: 25px;
+  padding: 25px;
+}
+
+.center img {
+  text-decoration: none;
+  color: inherit;
+  border: none;
+  outline: none;
+  height: 162px;
+  width: 250px;
+  margin: 20px 0px;
+}
+
+h4,
+h6 {
+  font-weight: 400;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.card-table {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: none;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.25rem;
+}
+
+.center .btn {
+  font-size: 14px !important;
+  margin-top: 20px !important;
+  font-weight: 400;
+  padding: 12px 72px;
+  border-radius: 3px !important;
+}
+
+/* Address popup */
+.highlight {
+  background-color: cornsilk;
+}
+/* Orders related */
+/*
+.order-card {
+  border: 1px solid #d4d5d9;
+  padding: 30px;
+  margin: 24px 0 37px;
+  width: 700px;
+  background: linear-gradient(to bottom, white 0%, #ebedee 100%);
+}
+.item-card {
+  padding-bottom: 20px;
+  background-image: linear-gradient(90deg, #a9abb2 25%, hsla(0, 0%, 100%, 0) 0);
+  background-position: bottom;
+  background-size: 4px 1px;
+  background-repeat: repeat-x;
+  display: flex;
+}
+.image-card {
+  background: rgba(40, 44, 63, 0.05);
+  width: 150px;
+  height: 100px;
+  cursor: pointer;
+}
+.item-card-details {
+  font-size: 17px;
+  font-weight: 500;
+  color: #3d4152;
+  display: inline-block;
+  cursor: pointer;
+  padding-left: 18px;
+}
+*/

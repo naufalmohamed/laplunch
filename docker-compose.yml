@@ -1,0 +1,123 @@
+version: "3.3"
+services:
+  laplunch-mongo:
+    image: mongo:latest
+    container_name: "laplunch-mongo"
+    network_mode: host
+    restart: always
+    ports:
+      - 27017:27017
+  notification-service:
+    build: ./notification-service
+    container_name : notification-service
+    network_mode: host
+    restart: always
+    ports:
+      - 9191:9191
+  recommendation-service:
+    build: ./recommendation-service
+    container_name: recommendation-service
+    network_mode: host
+    restart: always
+    ports:
+      - 8282:8282
+
+
+  api-gateway:
+    build: ./api-gateway
+    container_name: api-gateway
+    network_mode: host
+    restart: always
+    ports:
+      - 8080:8080
+
+
+  authentication-service:
+    build: ./authentication-service
+    container_name: authentication-service
+    network_mode: host
+    restart: always
+    ports:
+      - 8088:8088
+
+
+  eureka-server:
+    build: ./eureka-server
+    container_name: eureka-server
+    restart: always
+    ports:
+      - 8761:8761
+
+  menu-service:
+    build: ./menu-service
+    container_name: menu-service
+    network_mode: host
+#    hostname: localhost
+    restart: always
+    ports:
+      - 8085:8085
+
+
+  order-service:
+    build: ./order-service
+    container_name: order-service
+    network_mode: host
+    restart: always
+    ports:
+      - 8083:8083
+
+  payment-service:
+    build: ./payment-service
+    container_name: payment-service
+    network_mode: host
+    restart: always
+    ports:
+      - 9090:9090
+
+  user-service:
+    build: ./user-service
+    container_name: user-service
+    network_mode: host
+    restart: always
+    ports:
+      - 8086:8086
+
+  product-webapp:
+    build: ./product-webapp
+    container_name: product-webapp
+    network_mode: host
+#    hostname: localhost
+    restart: always
+    ports:
+      - 4200:4200
+
+  neo4j:
+    image: neo4j:latest
+    network_mode: host
+    restart: always
+    ports:
+      - 7687:7687
+    environment:
+      NEO4J_AUTH: neo4j/Password.0
+
+  lap-lunch-mysql:
+    image: mysql:latest
+    cap_add:
+      - SYS_NICE
+    network_mode: host
+    restart: always
+    environment:
+      - MYSQL_DATABASE=laplunch
+      - MYSQL_USERNAME=root
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - 3306:3306
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - 5672:5672
+      - 15672:15672
+

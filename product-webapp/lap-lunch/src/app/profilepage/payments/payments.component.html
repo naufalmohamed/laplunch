@@ -1,0 +1,22 @@
+<div style="margin: 10px; width: 700px">
+  <h4>Payment details:</h4>
+  <div class="row" style="margin: 20px">
+    <div class="col-6" *ngFor="let payment of userPayments">
+      <div class="card" style="margin-bottom: 20px">
+        <div class="card-body">
+          <h6>Payment Id: {{ payment.paymentId }}</h6>
+          <h6 style="color: gray">Order Id: {{ payment.orderId }}</h6>
+          <h6 style="color: gray">Paid:{{ payment.totalPrice }}</h6>
+          <h6
+            style="font-weight: bold"
+            [ngStyle]="{
+              color: payment.status === 'SUCCESS' ? 'green' : 'red'
+            }"
+          >
+            {{ payment.status }}
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

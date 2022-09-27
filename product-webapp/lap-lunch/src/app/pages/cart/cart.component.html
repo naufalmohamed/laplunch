@@ -1,0 +1,359 @@
+<ng-container *ngIf="menuproduct.items.length != 0">
+  <div class="container">
+    <div class="card-table">
+      <div class="cart-product">
+        <button
+          (click)="emptycart()"
+          class="btn button-addon3"
+          style="float: right; color: #808080"
+        >
+          Empty Full Cart
+        </button>
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th scope="col" class="border-0 bg-light text-center">
+                <div class="p-2 px-3">S.No</div>
+              </th>
+              <th scope="col" class="border-0 bg-light text-center">
+                <div class="px-3;">Item Name</div>
+              </th>
+              <th scope="col" class="border-0 bg-light text-center">
+                <div class="px-2">Item Image</div>
+              </th>
+              <th scope="col" class="border-0 bg-light text-center">
+                <div class="p-2 px-3">Item Description</div>
+              </th>
+              <th scope="col" class="border-0 bg-light text-center">
+                <div class="p-2 px-3">Item Category</div>
+              </th>
+              <th scope="col" class="border-0 bg-light text-center">
+                <div class="p-2 px-3">Item Price</div>
+              </th>
+              <th scope="col" class="border-0 bg-light text-center">
+                <div class="p-2 px-3">Quantity</div>
+              </th>
+              <th scope="col" class="border-0 bg-light text-center">
+                <div class="p-2 px-3">Total</div>
+              </th>
+              <th scope="col" class="border-0 bg-light text-center">
+                <div class="p-2 px-3">Action</div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of menuproduct.items; let i = index">
+              <td scope="col" class="text-center">{{ i + 1 }}</td>
+              <td scope="col" class="text-center">{{ item.itemName }}</td>
+              <td>
+                <img
+                  scope="col"
+                  class="text-center"
+                  style="width: 120px"
+                  src="{{ item.itemImage }}"
+                  alt=""
+                />
+              </td>
+              <td scope="col" class="text-center" style="width: 16%">
+                {{ item.itemDescription }}
+              </td>
+              <td scope="col" class="text-center" style="width: 12%">
+                {{ item.category }}
+              </td>
+              <th scope="col" class="text-center" style="width: 12%">
+                {{ item.itemCost }}
+              </th>
+              <td scope="col" class="text-center" style="width: 12%">
+                <button style="width: 30px" class="btn-block">
+                  <i class="fa fa-plus" (click)="inc(i)"></i>
+                </button>
+                <!-- <span {{item.Quantity}}></span> -->
+                <input style="width: 30px" value=" {{ item.quantity }}" />
+                <button style="width: 30px" class="btn-block">
+                  <i class="fa fa-minus" (click)="desc(i)"></i>
+                </button>
+                <!-- <select name="Qty" id="item.quantity">
+                  <option (click)="one(i)" selected="selected" value="one"> 1</option>
+                  <option  (click)="two(i)"value="two"> 2</option>
+                  <option (click)="three(i)" value="three"> 3</option>
+                  <option (click)="four(i)" value="four"> 4</option>
+                  <option (click)="five(i)"value="five"> 5</option>
+                  </select> -->
+              </td>
+              <td scope="col" class="text-center" style="width: 12%">
+                {{ item.itemCost * item.quantity }}
+              </td>
+              <td>
+                <button
+                  style="position: relative; left: 25%"
+                  (click)="removeItem(i)"
+                  class="btn btn-danger align-right"
+                >
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <tr style="float: right">
+          <!-- <div  style=" float:center;"><strong>You Pay : Rs.{{totalAmount}}.00</strong></div>                      -->
+          <button
+            style="position: relative; right: 150px"
+            routerLink="/"
+            class="btn btn-primary rounded-pill py-2 btn-block"
+          >
+            Add More
+          </button>
+        </tr>
+
+        <div class="row py-5 p-4 bg-white rounded shadow-sm">
+          <div class="col-lg-6">
+            <div
+              class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold border-0 mb-4"
+            >
+              Coupon code
+            </div>
+            <div class="p-4">
+              <p class="font-italic mb-4">
+                If you have a coupon code, please enter it in the box below
+              </p>
+              <div class="input-group mb-4 border rounded-pill p-2">
+                <input
+                  type="text"
+                  placeholder="Apply coupon"
+                  aria-describedby="button-addon3"
+                  class="form-control border-0"
+                />
+                <div class="input-group-append border-0">
+                  <button
+                    id="button-addon3"
+                    type="button"
+                    class="btn btn-primary px-4 rounded-pill"
+                  >
+                    <i class="fa fa-gift mr-2"></i>Apply coupon
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold"
+            >
+              Instructions for seller
+            </div>
+            <div class="p-4">
+              <p class="font-italic mb-4">
+                If you have some information for the seller you can leave them
+                in the box below
+              </p>
+              <textarea
+                name=""
+                cols="30"
+                rows="2"
+                class="form-control"
+              ></textarea>
+            </div>
+          </div>
+          <div class="col-lg-6" style="position: 0; right: 2px">
+            <div
+              class="bg-light rounded-pill px-4 py-3 text-center-UPPERCASE font-weight-bold align-middle"
+            >
+              Order summary
+            </div>
+            <div class="p-4">
+              <p class="font-italic mb-4">
+                Shipping and additional costs are calculated based on values you
+                have entered.
+              </p>
+              <ul class="list-unstyled mb-4">
+                <li class="d-flex justify-content-between py-3 border-bottom">
+                  <strong class="text-muted">Order Subtotal </strong
+                  ><strong>Rs.{{ getTotalAmount() }}.00</strong>
+                </li>
+                <li class="d-flex justify-content-between py-3 border-bottom">
+                  <strong class="text-muted">Shipping and handling</strong
+                  ><strong>Rs.50.00</strong>
+                </li>
+                <li class="d-flex justify-content-between py-3 border-bottom">
+                  <strong class="text-muted">Tax</strong
+                  ><strong>Rs.{{ totalAmount * 0.02 }}</strong>
+                </li>
+                <li class="d-flex justify-content-between py-3 border-bottom">
+                  <strong class="text-muted">Total</strong>
+                  <h5 class="font-weight-bold width: 12%">
+                    <strong>
+                      Rs.{{ totalAmount + totalAmount * 0.02 + 50 }}</strong
+                    >
+                  </h5>
+                </li>
+              </ul>
+              <button
+                style="position: absolute; padding: 20px; right: 100px"
+                class="btn btn-primary rounded-pill py-2 btn-block align-right"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop"
+              >
+                Procceed to checkout
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<div *ngIf="menuproduct.items.length == 0">
+  <div class="container">
+    <div class="card">
+      <h5 class="card-title">My Cart</h5>
+    </div>
+    <div class="center">
+      <img src="assets/emptycart.jpg" alt="" />
+      <h4>Your cart is empty!</h4>
+      <h6>Hungry !! add a food item right now..</h6>
+      <button routerLink="/" class="btn btn-primary">Order Now</button>
+    </div>
+  </div>
+</div>
+
+<!-- checkout popup -->
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Select address</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="closeButtonAddressPopoup()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div
+          class="row"
+          style="margin: 5px"
+          *ngFor="let address of addressList; let index = index"
+          (click)="addressclick(index)"
+        >
+          <div
+            class="card"
+            style="
+              height: 150px;
+              width: 600px;
+              padding: 10px;
+              margin-top: 10px;
+              margin-left: auto;
+              margin-right: auto;
+            "
+            [ngClass]="{ highlight: selectedindex === index }"
+          >
+            <div class="card-body">
+              <h5 class="card-title">{{ address.addressType }}</h5>
+              <p class="card-text">
+                {{ address.houseNum }}, {{ address.street }},
+                {{ address.city }}, {{ address.state }}, {{ address.pincode }}
+              </p>
+              <!-- <button
+                class="stretched-link"
+                (click)="addressclick(index)"
+                
+              ></button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          [ngClass]="{
+            disabled: selectedindex === -1
+          }"
+          (click)="createNewPayment()"
+        >
+          Pay
+        </button>
+        <!-- <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          [ngClass]="{ disabled: NotclickedButton }"
+          (click)="proceedToRazorpay()"
+        >
+          Pay
+        </button> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- order placed popup -->
+<!-- [hidden]="true" -->
+<button
+  [hidden]="true"
+  #myModal
+  data-bs-toggle="modal"
+  data-bs-target="#myModal"
+></button>
+<div
+  class="modal fade"
+  id="myModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel">Order Placed!</h5>
+        <button
+          type="button"
+          class="close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- order card -->
+        <div class="row">
+          <!-- list of items row ngFor-->
+          <div class="row" *ngFor="let it of newOrder.itemsList">
+            <div class="col-4">
+              <img
+                src="{{ it.image }}"
+                alt="Item Image"
+                style="height: 50px; width: 100px"
+              />
+            </div>
+            <div class="col-8">
+              <h5>{{ it.itemName }}</h5>
+              <h6>Quantity: {{ it.qty }}</h6>
+              <h6>Price: {{ it.itemCost }}</h6>
+            </div>
+            <hr />
+          </div>
+
+          <h5 style="padding-left: 300px">
+            Total Paid: {{ newOrder.totalPrice }}
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+.form-control{
+    /* size:1000px; */
+    box-shadow: 25px;
+    width: 500px;
+    height: 45px;
+    
+    top: 50px;
+    margin-top: 50px;
+    margin-left: 470px;
+    display: flexbox;
+
+
+}
+.search-icon{
+    position: absolute;
+    z-index: 10;
+    right: 38%;
+    margin-top:-25px;
+    color: black;
+    /* margin-left: 20px; */
+}
+button{
+     position: absolute;
+    display: flex;
+    margin-top: -45px;
+    right: 28%;
+    background-color: rgb(220, 125, 17);
+    border-radius: 5px;
+   
+    
+}

@@ -1,0 +1,20 @@
+
+<app-recommendation></app-recommendation>
+
+<div class="form-group">
+  <input
+    type="text"
+    class="form-control"
+    name="search-control"
+    ngModel="searchvalue"
+    (keyup)= "search($event)"
+    placeholder="search for items"
+  />
+</div>
+<span class="fas fa-search search-icon"></span>
+<button routerLink="/cart" class="btn btn-primary">
+  <i style="font-size: 30px" class="fas fa-cart-plus"></i>
+  <div style="font-size: 10px" class="badge bg-danger">{{ itemscount }}</div>
+</button>
+<app-product></app-product>
+

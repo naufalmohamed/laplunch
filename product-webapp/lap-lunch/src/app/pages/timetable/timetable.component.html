@@ -1,0 +1,1054 @@
+
+<br>
+<h3 style="margin-left: 120px; color: rgb(4, 4, 94);"><u>Your TimeTable</u></h3>
+
+<div  *ngIf= "alert" class="alert alert-success alert-dismissible fade show popup" role="alert">
+  <strong>Success!</strong> Your items are added..
+
+  <i class="fa fa-times fa-xl" (click)="closeAlert()" aria-hidden="true" onclick="m.close()" ></i>
+</div>
+
+
+<dialog id="m" >
+  <h2>Add Items For Monday!!</h2>
+  
+  <button  class="btn btn-primary" (click)= "submitItems('MONDAY')">submit</button>
+  <!-- <script>
+    function submitItems(i){
+      $.bootstrapGrowl("Submitted")
+
+    }
+  </script> -->
+ 
+  <!-- <button  class="btn btn-primary" (click)= "submitItems('MONDAY','submit','ok')">submit</button> -->
+  
+
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+   <i class="fa fa-window-close fa-2xl" aria-hidden="true" onclick="m.close()" ></i>
+
+
+  <div class="container"  >
+    <div class="card-table">
+      <div class="cart-product">
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th>Sr.No</th>
+              <th>Item Name</th>
+              <th>Item Image</th>
+              <th>Item Description</th>
+              <th>Item Category</th>
+              <th>Item Price</th>
+
+              <th>Total</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr *ngFor="let item of ListofItems; let i = index " >
+              <td>{{i+1}}</td>
+              <td>{{item.itemName}}</td>
+              <td><img style="width: 120px;" src={{item.itemImage}} alt=""></td>
+              <td style="width: 25%;">{{item.itemDescription}}</td>
+              <td style="width: 25%;">{{item.category}}</td>
+              <th style="width: 12%;">{{item.itemCost}}</th>
+
+              <td style="width: 12%;">{{item.itemCost}}</td>
+              <td>
+                <button  class="btn btn-success"   (click)= "addItems(i)" >
+                   {{addedItems[i]? "Added": "Add"}}
+                </button>
+                <!-- {{Add? "Add": "Added"}} -->
+                <!-- <div id="myDIV"><td>Add</td></div> -->
+                <!-- <button (click)= "addItems(i)">
+                <span> {{  "addItems(i)" ? 'some_text' : 'some_Other_text' }}</span>
+              </button> -->
+              </td>
+            </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</dialog>
+<!-- monday stored data -->
+<dialog id="ms">
+  <h2>Added Items For Monday!!</h2>
+
+
+
+  <!-- <button class="btn btn-primary" (click)= "submitItems('MONDAY')">submit</button> -->
+
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; 
+  <i class="fa fa-window-close fa-2xl" aria-hidden="true" onclick="ms.close()" (click)="onClickClose()" ></i>
+
+
+  <div class="container">
+    <div class="card-table">
+      <div class="cart-product">
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th>Sr.No</th>
+              <th>Item Name</th>
+              <th>Item Price</th>
+              <th>Remove Item</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr *ngFor="let item of  monList  ; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{item.itemName}}</td>
+              <th >{{item.itemCost}}</th>
+              <td style="width: 12%;"><i class="fa fa-minus-circle fa-xl" aria-hidden="true" (click)="removeMondayItem(i)"></i></td>
+
+            
+              <!-- <td>
+                <button class="btn btn-success"  (click)= "addItems(i)"></button>
+              </td> -->
+            </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  
+</dialog>
+  
+
+<!-- Tuesday dialogue box -->
+<dialog id="t" >
+  <h2>Add Items For Tuesday!!</h2>
+
+  <button class="btn btn-primary" (click)= "submitItems('TUESDAY')">submit</button>
+ 
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  <i class="fa fa-window-close fa-2xl" aria-hidden="true" onclick="t.close()" ></i>
+  
+    
+  <div class="container">
+    <div class="card-table">
+        <div class="cart-product">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>Sr.No</th>
+                        <th>Item Name</th>
+                        <th>Item Image</th>
+                        <th>Item Description</th>
+                        <th>Item Category</th>
+                        <th>Item Price</th>
+                        
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor = "let item of ListofItems; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{item.itemName}}</td>
+                        <td><img style="width: 120px;" src= {{item.itemImage}} alt=""></td>
+                        <td style="width: 25%;">{{item.itemDescription}}</td>
+                        <td style="width: 25%;">{{item.category}}</td>
+                        <th style="width: 12%;">{{item.itemCost}}</th>
+                        
+                        <td style="width: 12%;">{{item.itemCost}}</td>
+                        <td>
+                          <button  class="btn btn-success"   (click)= "addItems(i)" >
+                            {{addedItems[i]? "Added": "Add"}}
+                         </button>
+                        </td>
+                    </tr>
+                  
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+  
+</dialog>
+
+<!-- Tuesday show data -->
+<dialog id="ts">
+  <h2>Added Items For Tuesday!!</h2>
+
+
+
+  <!-- <button class="btn btn-primary" (click)= "submitItems('MONDAY')">submit</button> -->
+
+  
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+  &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;
+  <i class="fa fa-window-close fa-2xl" aria-hidden="true" onclick="ts.close()" (click)="onClickCloseTuesday()" ></i>
+
+
+  <div class="container">
+    <div class="card-table">
+      <div class="cart-product">
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th>Sr.No</th>
+              <th>Item Name</th>
+              <th>Item Price</th>
+              <th>Remove Item</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr *ngFor="let item of  tueList ; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{item.itemName}}</td>
+              <th >{{item.itemCost}}</th>
+              <td style="width: 12%;"><i class="fa fa-minus-circle fa-xl" aria-hidden="true" (click)="removeTuesdayItem(i)"></i></td>
+
+            
+              <!-- <td>
+                <button class="btn btn-success"  (click)= "addItems(i)"></button>
+              </td> -->
+            </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  
+</dialog>
+<!-- Wednesday  -->
+<dialog id="w" >
+  <h2>Add Items For Wednesday!!</h2>
+  <button class="btn btn-primary" (click)= "submitItems('WEDNESDAY')">submit</button>
+  
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  <i class="fa fa-window-close fa-2xl" aria-hidden="true" onclick="w.close()" ></i>
+    
+  <div class="container">
+    <div class="card-table">
+        <div class="cart-product">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>Sr.No</th>
+                        <th>Item Name</th>
+                        <th>Item Image</th>
+                        <th>Item Description</th>
+                        <th>Item Category</th>
+                        <th>Item Price</th>
+                        
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor = "let item of ListofItems; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{item.itemName}}</td>
+                        <td><img style="width: 120px;" src= {{item.itemImage}} alt=""></td>
+                        <td style="width: 25%;">{{item.itemDescription}}</td>
+                        <td style="width: 25%;">{{item.category}}</td>
+                        <th style="width: 12%;">{{item.itemCost}}</th>
+                        
+                        <td style="width: 12%;">{{item.itemCost}}</td>
+                        <td>
+                          <button  class="btn btn-success"   (click)= "addItems(i)" >
+                            {{addedItems[i]? "Added": "Add"}}
+                         </button>
+                        </td>
+                    </tr>
+                  
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</dialog>
+<!-- wednesday show data -->
+<dialog id="wed">
+  <h2>Added Items For Wednesday!!</h2>
+
+
+
+  <!-- <button class="btn btn-primary" (click)= "submitItems('MONDAY')">submit</button> -->
+
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+  &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;
+  <i class="fa fa-window-close fa-2xl" aria-hidden="true" onclick="wed.close()" (click)="onClickCloseWednesday()"></i>
+
+
+  <div class="container">
+    <div class="card-table">
+      <div class="cart-product">
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th>Sr.No</th>
+              <th>Item Name</th>
+              <th>Item Price</th>
+              <th>Remove Item</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr *ngFor="let item of  wedList ; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{item.itemName}}</td>
+              <th >{{item.itemCost}}</th>
+              <td style="width: 12%;"><i class="fa fa-minus-circle fa-xl" aria-hidden="true" (click)="removeWednesdayItem(i)"></i></td>
+
+            
+              <!-- <td>
+                <button class="btn btn-success"  (click)= "addItems(i)"></button>
+              </td> -->
+            </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  
+</dialog>
+
+<!-- Thursday -->
+<dialog id="thu" >
+  <h2>Add Items For Thursday!!</h2>
+  <button class="btn btn-primary" (click)= "submitItems('THURSDAY')">submit</button>
+  
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  <i class="fa fa-window-close fa-2xl" aria-hidden="true" onclick="thu.close()" ></i>
+    
+  <div class="container">
+    <div class="card-table">
+        <div class="cart-product">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>Sr.No</th>
+                        <th>Item Name</th>
+                        <th>Item Image</th>
+                        <th>Item Description</th>
+                        <th>Item Category</th>
+                        <th>Item Price</th>
+                        
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor = "let item of ListofItems; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{item.itemName}}</td>
+                        <td><img style="width: 120px;" src= {{item.itemImage}} alt=""></td>
+                        <td style="width: 25%;">{{item.itemDescription}}</td>
+                        <td style="width: 25%;">{{item.category}}</td>
+                        <th style="width: 12%;">{{item.itemCost}}</th>
+                        
+                        <td style="width: 12%;">{{item.itemCost}}</td>
+                        <td>
+                          <button  class="btn btn-success"   (click)= "addItems(i)" >
+                            {{addedItems[i]? "Added": "Add"}}
+                         </button>
+                        </td>
+                    </tr>
+                  
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+ 
+</dialog>
+<!-- Thursday show data -->
+<dialog id="thurs">
+  <h2>Added Items For Thursady!!</h2>
+
+
+
+  <!-- <button class="btn btn-primary" (click)= "submitItems('MONDAY')">submit</button> -->
+
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+  &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;
+  <i class="fa fa-window-close fa-2xl" aria-hidden="true" onclick="thurs.close()" (click)="onClickCloseThursday()"></i>
+
+
+  <div class="container">
+    <div class="card-table">
+      <div class="cart-product">
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th>Sr.No</th>
+              <th>Item Name</th>
+              <th>Item Price</th>
+              <th>Remove Item</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr *ngFor="let item of  thursList ; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{item.itemName}}</td>
+              <th >{{item.itemCost}}</th>
+              <td style="width: 12%;"><i class="fa fa-minus-circle fa-xl" aria-hidden="true" (click)="removeThursdayItem(i)"></i></td>
+
+            
+              <!-- <td>
+                <button class="btn btn-success"  (click)= "addItems(i)"></button>
+              </td> -->
+            </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  
+</dialog>
+
+<!-- Friday -->
+<dialog id="fri" >
+  <h2>Add Items For Friday!!</h2>
+  <button class="btn btn-primary" (click)= "submitItems('FRIDAY')">submit</button>
+ 
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  <i class="fa fa-window-close fa-2xl" aria-hidden="true" onclick="fri.close()" ></i>
+    
+  <div class="container">
+    <div class="card-table">
+        <div class="cart-product">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>Sr.No</th>
+                        <th>Item Name</th>
+                        <th>Item Image</th>
+                        <th>Item Description</th>
+                        <th>Item Category</th>
+                        <th>Item Price</th>
+                        
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor = "let item of ListofItems; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{item.itemName}}</td>
+                        <td><img style="width: 120px;" src= {{item.itemImage}} alt=""></td>
+                        <td style="width: 25%;">{{item.itemDescription}}</td>
+                        <td style="width: 25%;">{{item.category}}</td>
+                        <th style="width: 12%;">{{item.itemCost}}</th>
+                        
+                        <td style="width: 12%;">{{item.itemCost}}</td>
+                        <td>
+                          <button  class="btn btn-success"   (click)= "addItems(i)" >
+                            {{addedItems[i]? "Added": "Add"}}
+                         </button>
+                        </td>
+                    </tr>
+                  
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+  
+</dialog>
+<!-- Friday show data -->
+<dialog id="friday">
+  <h2>Added Items For Friday!!</h2>
+
+
+
+  <!-- <button class="btn btn-primary" (click)= "submitItems('MONDAY')">submit</button> -->
+
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+  &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;
+  <i class="fa fa-window-close fa-2xl" aria-hidden="true" onclick="friday.close()" (click)="onClickCloseFriday()"></i>
+
+
+  <div class="container">
+    <div class="card-table">
+      <div class="cart-product">
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th>Sr.No</th>
+              <th>Item Name</th>
+              <th>Item Price</th>
+              <th>Remove Item</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr *ngFor="let item of  friList ; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{item.itemName}}</td>
+              <th >{{item.itemCost}}</th>
+              <td style="width: 12%;"> <i class="fa fa-minus-circle fa-xl" aria-hidden="true" (click)="removeFridayItem(i)"></i></td>
+
+            
+              <!-- <td>
+                <button class="btn btn-success"  (click)= "addItems(i)"></button>
+              </td> -->
+            </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  
+</dialog>
+<!-- Saturday -->
+<dialog id="sat" >
+  <h2>Add Items For Saturday!!</h2>
+  <button class="btn btn-primary" (click)= "submitItems('SATURDAY')">submit</button>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; 
+  <i class="fa fa-window-close fa-2xl" aria-hidden="true" onclick="sat.close()" ></i>
+    
+  <div class="container">
+    <div class="card-table">
+        <div class="cart-product">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>Sr.No</th>
+                        <th>Item Name</th>
+                        <th>Item Image</th>
+                        <th>Item Description</th>
+                        <th>Item Category</th>
+                        <th>Item Price</th>
+                        
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor = "let item of ListofItems; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{item.itemName}}</td>
+                        <td><img style="width: 120px;" src= {{item.itemImage}} alt=""></td>
+                        <td style="width: 25%;">{{item.itemDescription}}</td>
+                        <td style="width: 25%;">{{item.category}}</td>
+                        <th style="width: 12%;">{{item.itemCost}}</th>
+                        
+                        <td style="width: 12%;">{{item.itemCost}}</td>
+                        <td>
+                          <button  class="btn btn-success"   (click)= "addItems(i)" >
+                            {{addedItems[i]? "Added": "Add"}}
+                         </button>
+                        </td>
+                    </tr>
+                  
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+  
+</dialog>
+<!-- Saturday show data -->
+<dialog id="satur">
+  <h2>Added Items For Saturday!!</h2>
+
+
+
+  <!-- <button class="btn btn-primary" (click)= "submitItems('MONDAY')">submit</button> -->
+
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+  &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;
+  <i class="fa fa-window-close fa-2xl" aria-hidden="true" onclick="satur.close()" (click)="onClickCloseSaturday()"></i>
+
+
+  <div class="container">
+    <div class="card-table">
+      <div class="cart-product">
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th>Sr.No</th>
+              <th>Item Name</th>
+              <th>Item Price</th>
+              <th>Remove Item</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr *ngFor="let item of  satList ; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{item.itemName}}</td>
+              <th >{{item.itemCost}}</th>
+              <td style="width: 12%;"><i class="fa fa-minus-circle fa-xl" aria-hidden="true" (click)="removeSaturdayItem(i)"></i></td>
+
+            
+              <!-- <td>
+                <button class="btn btn-success"  (click)= "addItems(i)"></button>
+              </td> -->
+            </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  
+</dialog>
+<!-- Sunday -->
+<dialog id="sun" >
+  <h2>Add Items For Sunday!!</h2>
+  <button class="btn btn-primary" (click)= "submitItems('SUNDAY')">submit</button>
+  
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  <i class="fa fa-window-close fa-2xl" aria-hidden="true" onclick="sun.close()" ></i>
+    
+  <div class="container">
+    <div class="card-table">
+        <div class="cart-product">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>Sr.No</th>
+                        <th>Item Name</th>
+                        <th>Item Image</th>
+                        <th>Item Description</th>
+                        <th>Item Category</th>
+                        <th>Item Price</th>
+                        
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor = "let item of ListofItems; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{item.itemName}}</td>
+                        <td><img style="width: 120px;" src= {{item.itemImage}} alt=""></td>
+                        <td style="width: 25%;">{{item.itemDescription}}</td>
+                        <td style="width: 25%;">{{item.category}}</td>
+                        <th style="width: 12%;">{{item.itemCost}}</th>
+                        
+                        <td style="width: 12%;">{{item.itemCost}}</td>
+                        <td>
+                          <button  class="btn btn-success"   (click)= "addItems(i)" >
+                            {{addedItems[i]? "Added": "Add"}}
+                         </button>
+                        </td>
+
+                    </tr>
+                  
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+  
+</dialog>
+<!-- Sunday show data -->
+<dialog id="sunday">
+  <h2>Added Items For Sunday!!</h2>
+
+
+
+  <!-- <button class="btn btn-primary" (click)= "submitItems('MONDAY')">submit</button> -->
+
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+  &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;
+  <i class="fa fa-window-close fa-2xl" aria-hidden="true" onclick="sunday.close()" (click)="onClickCloseSunday()"></i>
+
+  <div class="container">
+    <div class="card-table">
+      <div class="cart-product">
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th>Sr.No</th>
+              <th>Item Name</th>
+              <th>Item Price</th>
+              <th>Remove Item</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr *ngFor="let item of  sunList ; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{item.itemName}}</td>
+              <th >{{item.itemCost}}</th>
+              <td style="width: 12%;"><i class="fa fa-minus-circle fa-xl" aria-hidden="true" (click)="removeSundayItem(i)"></i></td>
+
+            
+              <!-- <td>
+                <button class="btn btn-success"  (click)= "addItems(i)"></button>
+              </td> -->
+            </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  
+</dialog>
+
+<!-- Monday card -->
+<!-- <button type="submit" onclick= "ms.show()" class="btn btn-primary"> show</button> -->
+<div class="container">
+
+
+  <div class="row justifiy-content-center">
+
+    <div class="col-md-4">
+      <br><br>
+      <div class="card shadow" style="width: 18rem;">
+        <div class="inner">
+          <img src="assets/monday.jpg" class="card-img-top" alt="...">
+
+        </div>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Monday</h5>
+            <p class="card-text">Add items for monday</p>
+
+            
+            <!-- <button type="button" onclick= "ms.show()" class="btn btn-primary" (click)="showMondayItems()"> show</button> -->
+            <button type="button" onclick= "ms.show()" class="btn btn-primary" (click)="showMondayItems()" > show</button>
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;
+            
+            <!-- <button id="success" type="button" onclick="m.show()" class="btn btn-primary">Add</button> -->
+            <i class="fas fa-plus fa-xl" onclick="m.show()"></i>
+            
+
+
+          </div>
+         
+        </div>
+      </div>
+
+    </div>
+<!-- Tuesday Card -->
+    <div class="col-md-4">
+      <br><br>
+      <div class="card shadow" style="width: 18rem;">
+        <div class="inner">
+          <img src="assets/tuesday.jpg" class="card-img-top" alt="...">
+
+        </div>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Tuesday</h5>
+            <p class="card-text">Add items for tuesday</p>
+            <button type="button" onclick= "ts.show()" class="btn btn-primary" (click)="showTuesdayItems()" > show</button>
+
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;
+
+            
+            <!-- <button onclick="t.show()" class="btn btn-primary">Add</button> -->
+            <i class="fas fa-plus fa-xl" onclick="t.show()"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- Wednesady card -->
+    <div class="col-md-4">
+      <br><br>
+      <div class="card shadow" style="width: 18rem;">
+        <div class="inner">
+          <img src="assets/wednesday.jpg" class="card-img-top" alt="...">
+
+        </div>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Wednesday</h5>
+            <p class="card-text">Add items for wedensday</p>
+            <button type="button" onclick= "wed.show()" class="btn btn-primary" (click)="showWednesdayItems()" > show</button>
+
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;
+            
+            <!-- <button onclick="w.show()" class="btn btn-primary">Add</button> -->
+            <i class="fas fa-plus fa-xl" onclick="w.show()"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- Thursday card -->
+
+    <div class="col-md-4">
+      <br><br>
+      <div class="card shadow" style="width: 18rem;">
+        <div class="inner">
+          <img src="assets/thursday.jpg" class="card-img-top" alt="...">
+
+        </div>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Thursday</h5>
+            <p class="card-text">Add items for thursdasy</p>
+            <button type="button" onclick= "thurs.show()" class="btn btn-primary" (click)="showThursdayItems()" > show</button>
+
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;
+            
+            <!-- <button onclick="thu.show()" class="btn btn-primary">Add</button> -->
+            <i class="fas fa-plus fa-xl" onclick="thu.show()"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- Friday card -->
+    <div class="col-md-4">
+      <br><br>
+      <div class="card shadow" style="width: 18rem;">
+        <div class="inner">
+          <img src="assets/friday.jpg" class="card-img-top" alt="...">
+
+        </div>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Friday</h5>
+            <p class="card-text">Add items for friday</p>
+            <button type="button" onclick= "friday.show()" class="btn btn-primary" (click)="showFridayItems()" > show</button>
+
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;
+            
+            <!-- <button onclick="fri.show()" class="btn btn-primary">Add</button> -->
+            <i class="fas fa-plus fa-xl" onclick="fri.show()"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- Saturday card -->
+    <div class="col-md-4">
+      <br><br>
+      <div class="card shadow" style="width: 18rem;">
+        <div class="inner">
+          <img src="assets/saturday.jpg" class="card-img-top" alt="...">
+
+        </div>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Saturday</h5>
+            <p class="card-text">Add items for saturday</p>
+            <button type="button" onclick= "satur.show()" class="btn btn-primary" (click)="showSaturdayItems()" > show</button>
+
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;
+            
+            <!-- <button onclick="sat.show()" class="btn btn-primary">Add</button> -->
+            <i class="fas fa-plus fa-xl" onclick="sat.show()"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- Sunday card -->
+    <div class="col-md-4">
+      <br><br>
+      <div class="card shadow" style="width: 18rem;">
+        <div class="inner">
+          <img src="assets/sunday.jpg" class="card-img-top" alt="...">
+        </div>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Sunday</h5>
+            <p class="card-text">Add items for sunday</p>
+            <button type="button" onclick= "sunday.show()" class="btn btn-primary" (click)="showSundayItems()" > show</button>
+
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;
+            <!-- <button onclick="sun.show()" class="btn btn-primary">Add</button> -->
+            <i class="fas fa-plus fa-xl" onclick="sun.show()"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <br><br>

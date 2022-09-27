@@ -1,0 +1,110 @@
+
+/* html
+{
+ margin:0px;
+ height:100%;
+ width:100%; 
+ background: linear-gradient(45deg,rgb(164, 239, 164) , rgb(129, 129, 245));
+  -webkit-background-size:cover;
+ -o-background-size:cover;
+ -moz-background-size:cover;
+ background-size:cover;
+} */
+
+
+html
+{
+ background-image: linear-gradient(45deg,rgb(164, 239, 164) , rgb(129, 129, 245));
+}
+
+  .container{
+    background-color: rgb(242, 237, 231);
+    padding: 20px;
+    /* padding: 30px;
+    border-radius: 10px;
+    padding-bottom: 40px;
+    margin-bottom: 100px;
+    height: 500px;
+    width: 450px; */
+    border-radius: 10px; 
+    
+  }
+
+ 
+  h1{
+    font-size: 2.0em;
+  }
+  .bg{
+    background: linear-gradient(45deg,rgb(164, 239, 164) , rgb(129, 129, 245));
+    /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); */
+
+    /* background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(20).webp"); */
+    /* height: 100%;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size:cover;
+    -o-background-size:cover;
+    -moz-background-size:cover;
+    background-size:cover;
+    position: center; */ 
+    padding-top: 80px;
+    height: 100%;
+    width: 100%;
+  }
+  h1,h4{
+    text-align: center;
+  }
+  .input-icons i {
+    position: absolute;
+  }
+  .input-icons {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .icon {
+    padding: 15px;
+    min-width: 10px;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background: linear-gradient(rgb(198, 198, 238));
+  }
+  
+  .bt{
+    text-align: center;
+  }
+  .btn{
+    width: 100%;
+  }
+  
+  .col-md-4 {
+    /* background: linear-gradient(45deg,rgb(164, 239, 164) , rgb(129, 129, 245)); */
+    /* margin-left: 32%;
+    margin-top: 10px;
+    margin-bottom: 5%; */
+    margin: auto;
+    justify-content: center;
+    /* margin-bottom: 100px; */
+    padding: 25px;
+    
+  }
+  
+
+ .alert {
+  float: right;
+  width: 300px;
+  margin-top: 10px;
+  margin-right: 10px;
+ }
+
+ .close {
+  float: right;
+  border: 0px;
+  background: none;
+  margin-left: 5px;
+ }

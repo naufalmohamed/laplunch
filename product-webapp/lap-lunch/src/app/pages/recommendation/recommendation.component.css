@@ -1,0 +1,233 @@
+
+#header{
+  position:relative;
+  width: 100%;
+  
+  
+}
+
+
+.form-control{
+    box-sizing:content-box;
+    box-shadow: 25px;
+    width: 600px;
+    margin-left: 20px;
+    top: 100px;
+    margin-top: 50px;
+    margin-left: 400px;
+
+}
+.search-icon{
+    position: absolute;
+    z-index: 10;
+    left: 65%;
+    margin-top:-200px;
+    color: black;
+    margin-left: 40px;
+}
+/* button{
+    position: absolute;
+    margin-top: 0px;
+    left: 80%;
+    
+    border-radius: 5px;
+    
+} */
+.card-top {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    margin-top: 10px;
+    word-wrap: break-word;
+    background: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: .25rem;
+}
+.item img {
+    width: 10px;
+}
+
+.item {
+    margin: 0px 15px;
+    text-align: center;
+}
+
+.item a:hover {
+    color: blue;
+}
+
+.card {
+    padding: 20px;
+    margin: 10px;
+    background-color: rgb(198, 199, 207);
+}
+
+.card img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 15px;
+    transition: 0.3s ease-in-out;
+    border-radius: 0.25rem; 
+}
+
+.card img:hover {
+    transition: 0.3s ease-in-out;
+    transform: scale(1.1);
+}
+
+.card button{
+    box-sizing: 10px;
+    border-color: rgb(0 0 0 / 46%);
+    box-shadow: 5px;
+    border-radius: .5rem;
+    margin-left: 100px;
+}
+
+/* For Recommendation cards */
+
+
+/* Carousel */
+
+
+/* .carousel-caption {
+    background-color: rgb(0 0 0 / 46%);
+    text-align: left;
+    padding: 25px;
+    border-radius: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+} */
+/* ol.carousel-indicators {
+    display: block;
+    left: auto;
+    bottom: 50px;
+    right: 15px;
+}
+.carousel-indicators li {
+    height: 5px;
+    background-color: #ffeb3b;
+    opacity: .6;
+} */
+.carousel-inner {
+    width:  100%;
+    height:min-content;
+
+}
+.carousel-image{
+    float: left;
+    width:  100%;
+    height: 600px;
+    object-fit: cover;
+}
+
+.centered {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    width:fit-content;
+    height:fit-content;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    text-align: center;
+
+  }
+
+  /* .carousel-header-font{
+    font-size: 30px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color:red;
+    background-color:yellow;
+  } */
+
+  .h1title{
+    font-family:'Courier New', Courier, monospace;
+	  font-size: 70px;
+    color:#e1e1e3;
+    background-color: rgb(0 0 0 / 46%);
+    font-weight: 300;
+    line-height: 50px; 
+  }
+
+  .h3title{
+    font-family: 'Open Sans', sans-serif;
+	margin-bottom: 30px;
+    text-align: center;
+    background-color: rgb(0 0 0 / 46%);
+  }
+
+  /* Dropdown Menu */
+ 
+
+  .dropbtn {
+  background-color: rgb(0 0 0 / 46%);
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  min-width:500px;
+  width:auto;
+  border-radius: 10px;
+  margin-top: 100px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color:bisque;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  width:500px;
+  border-radius: 10px;
+
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border-radius: 10px;
+
+}
+
+.dropdown-content a:hover {background-color: rgb(0 0 0 / 46%)}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: rgb(0 0 0 / 46%);
+}
+
+#recCard:hover{
+  /* background-color: #4CAF50; */
+  border-color: black;
+}
+
+/*  */
+
+
+
+
+/*  */
+#addButton{
+  width:100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+#addButton:hover{
+  background-color: bisque;
+}
